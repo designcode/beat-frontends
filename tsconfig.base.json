@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@beat-frontends/backend": ["libs/backend/src/index.ts"]
+      "@beat-frontends/backend": ["libs/backend/src/index.ts"],
+      "@beat-frontends/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

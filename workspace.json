@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "backend": "libs/backend",
+    "ui": "libs/ui",
     "webapp": "apps/webapp",
     "webapp-e2e": "apps/webapp-e2e"
   }
