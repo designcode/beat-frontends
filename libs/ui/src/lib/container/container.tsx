@@ -12,7 +12,6 @@ const StyledContainer = styled.div`
 
   .container {
     width: 50rem;
-    text-align: center;
     margin: 5rem;
   }
 `;
