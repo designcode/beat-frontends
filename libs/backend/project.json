@@ -1,0 +1,31 @@
+{
+  "root": "libs/backend",
+  "sourceRoot": "libs/backend/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "serve": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "npx json-server --watch libs/backend/src/lib/db.json --port 8080"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/backend/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/backend"],
+      "options": {
+        "jestConfig": "libs/backend/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
