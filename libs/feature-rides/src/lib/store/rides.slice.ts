@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RideEntity } from '@beat-frontends/types';
-import { configureStore } from '@reduxjs/toolkit';
 
 export const fetchRides = createAsyncThunk('rides/fetchRides', async () => {
   return fetch('http://localhost:8080/items').then((res) => res.json());
@@ -40,16 +39,3 @@ export const ridesSlice = createSlice({
       });
   },
 });
-
-export const selectRidesState = (state: RideState) => state.rides;
-
-export const selectPostById = (state: RideState, ridesId: number) =>
-  state.rides.entities.find((rides) => rides.id === ridesId);
-
-export const store = configureStore({
-  reducer: {
-    rides: ridesSlice.reducer,
-  },
-});
-
-export type RideState = ReturnType<typeof store.getState>;

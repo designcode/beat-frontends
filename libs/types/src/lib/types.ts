@@ -11,7 +11,7 @@ export interface RideInfo {
   map: string,
 }
 
-export interface CommentEntity {
+export interface RatingEntity {
   id: number;
   rate: number;
   message: string;

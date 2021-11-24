@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 import { Provider } from 'react-redux';
-import { store } from './feature-rides.slice';
+import { Route } from 'react-router-dom';
+import { store } from './store/store';
 import { RideList } from './component/ride-list/ride-list';
+import { RideOverview } from './component/ride-overview/ride-overview';
 
 /* eslint-disable-next-line */
 export interface FeatureRidesProps {}
@@ -16,7 +18,8 @@ export function FeatureRides(props: FeatureRidesProps) {
       <Provider store={store}>
         <h1>Rides!</h1>
 
-        <RideList />
+        <Route exact path="/rides" component={RideList} />
+        <Route path="/rides/:rideId" component={RideOverview} />
       </Provider>
     </StyledFeatureRides>
   );
