@@ -3,6 +3,7 @@
   "projects": {
     "backend": "libs/backend",
     "feature-landing": "libs/feature-landing",
+    "feature-rides": "libs/feature-rides",
     "ui": "libs/ui",
     "webapp": "apps/webapp",
     "webapp-e2e": "apps/webapp-e2e"

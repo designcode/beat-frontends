@@ -1,0 +1,23 @@
+{
+  "root": "libs/feature-rides",
+  "sourceRoot": "libs/feature-rides/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/feature-rides/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/feature-rides"],
+      "options": {
+        "jestConfig": "libs/feature-rides/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
