@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
-import { fetchRideById, fetchRides } from '../../store/rides.slice';
+import { fetchRideById } from '../../store/rides.slice';
 import { RideState } from '../../store/store';
 import { RideDetails } from './../ride-details/ride-details';
 import { Ratings } from './../ratings/ratings';

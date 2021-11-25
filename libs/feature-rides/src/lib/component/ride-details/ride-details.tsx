@@ -1,12 +1,13 @@
+import styled from '@emotion/styled';
 import { Card } from '@beat-frontends/ui';
 import { RideEntity } from '@beat-frontends/shared/types';
-import styled from '@emotion/styled';
+import { formateDate, formatCurrency } from '@beat-frontends/shared/utils';
 
 const StyledRideList = styled.div`
   .header {
     display: flex;
     justify-content: space-between;
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 `;
 
@@ -17,13 +18,17 @@ export interface RideDetailsProps {
 
 export function RideDetails(props: RideDetailsProps) {
   const ride = props.ride;
-  const rideInfo = props.showMap ? ride.ride.map : ride.ride.dropoff;
+  const rideInfo = props.showMap ? (
+    <img src={ride.ride.map} alt={ride.ride.dropoff} />
+  ) : (
+    ride.ride.dropoff
+  );
   return (
     <StyledRideList>
       <Card>
         <div className="header">
-          <div className="created">{ride.ride.created_at}</div>
-          <div className="amount">{ride.ride.total}</div>
+          <h3>{formateDate(ride.ride.created_at)}</h3>
+          <strong>{formatCurrency(ride.ride.total)}</strong>
         </div>
         <div className="body">{rideInfo}</div>
       </Card>
