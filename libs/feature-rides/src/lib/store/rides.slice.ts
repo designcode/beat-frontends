@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RideEntity } from '@beat-frontends/types';
+import { RideEntity } from '@beat-frontends/shared/types';
 
 export interface RideOverviewRequestPayload {
   rideId: number;

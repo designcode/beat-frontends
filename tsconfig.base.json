@@ -18,7 +18,7 @@
       "@beat-frontends/backend": ["libs/backend/src/index.ts"],
       "@beat-frontends/feature-landing": ["libs/feature-landing/src/index.ts"],
       "@beat-frontends/feature-rides": ["libs/feature-rides/src/index.ts"],
-      "@beat-frontends/types": ["libs/types/src/index.ts"],
+      "@beat-frontends/shared/types": ["libs/shared/types/src/index.ts"],
       "@beat-frontends/ui": ["libs/ui/src/index.ts"]
     }
   },

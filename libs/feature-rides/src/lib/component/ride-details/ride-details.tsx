@@ -1,5 +1,5 @@
 import { Card } from '@beat-frontends/ui';
-import { RideEntity } from '@beat-frontends/types';
+import { RideEntity } from '@beat-frontends/shared/types';
 import styled from '@emotion/styled';
 
 const StyledRideList = styled.div`

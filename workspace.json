@@ -4,7 +4,7 @@
     "backend": "libs/backend",
     "feature-landing": "libs/feature-landing",
     "feature-rides": "libs/feature-rides",
-    "types": "libs/types",
+    "shared-types": "libs/shared/types",
     "ui": "libs/ui",
     "webapp": "apps/webapp",
     "webapp-e2e": "apps/webapp-e2e"

@@ -4,11 +4,11 @@ export interface RideEntity {
 }
 
 export interface RideInfo {
-  created_at: Date,
-  total: string,
-  pickup: string,
-  dropoff: string,
-  map: string,
+  created_at: Date;
+  total: string;
+  pickup: string;
+  dropoff: string;
+  map: string;
 }
 
 export interface RatingEntity {

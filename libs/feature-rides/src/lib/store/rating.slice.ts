@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RatingEntity } from '@beat-frontends/types';
+import { RatingEntity } from '@beat-frontends/shared/types';
 
 export const fetchRating = createAsyncThunk('ratings/fetchRating', async () => {
   return fetch('http://localhost:8080/comments').then((res) => res.json());
@@ -28,9 +28,15 @@ export const ratingSlice = createSlice({
       })
       .addCase(
         fetchRating.fulfilled,
-        (state: RideRatingState, action: PayloadAction<Array<RatingEntity>>) => {
+        (
+          state: RideRatingState,
+          action: PayloadAction<Array<RatingEntity>>
+        ) => {
           state.status = 'succeeded';
-          state.entities = action.payload.reduce((c, v) => ({ ...c, [v.id]: v}), {});
+          state.entities = action.payload.reduce(
+            (c, v) => ({ ...c, [v.id]: v }),
+            {}
+          );
         }
       )
       .addCase(fetchRating.rejected, (state, action) => {
