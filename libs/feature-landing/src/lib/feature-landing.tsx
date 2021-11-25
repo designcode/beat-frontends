@@ -1,13 +1,8 @@
-import styled from '@emotion/styled';
+import { Card } from '@beat-frontends/ui';
 
-/* eslint-disable-next-line */
-export interface FeatureLandingProps {}
-
-const StyledFeatureLanding = styled.div``;
-
-export function FeatureLanding(props: FeatureLandingProps) {
+export function FeatureLanding() {
   return (
-    <StyledFeatureLanding>
+      <Card>
       <h1>Welcome to the Beat App!</h1>
       <p>
         Beat revolutionizes the way you move in the city. Ride with the first
@@ -15,7 +10,7 @@ export function FeatureLanding(props: FeatureLandingProps) {
         times. Beat Tesla is the largest private fleet of Tesla cars in Latin
         America and offers premium, high-tech rides. Beat. Mobility, redefined.
       </p>
-    </StyledFeatureLanding>
+      </Card>
   );
 }
 
