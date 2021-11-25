@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RatingEntity } from '@beat-frontends/types';
-import { configureStore } from '@reduxjs/toolkit';
 
 export const fetchRating = createAsyncThunk('ratings/fetchRating', async () => {
   return fetch('http://localhost:8080/comments').then((res) => res.json());

@@ -4,8 +4,8 @@ import { ridesSlice } from './rides.slice';
 
 export const store = configureStore({
   reducer: {
-    ratings: ratingSlice.reducer,
     rides: ridesSlice.reducer,
+    ratings: ratingSlice.reducer,
   },
 });
 
