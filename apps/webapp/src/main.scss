@@ -16,7 +16,11 @@ body {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
   }
 
   h1,
@@ -24,6 +28,6 @@ body {
   h3,
   h4,
   h5 {
-    margin: 0 0 2rem 0;
+    margin: 0.5rem 0 2rem 0.5rem;
   }
 }

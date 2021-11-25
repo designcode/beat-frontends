@@ -9,7 +9,7 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 2rem 0;
+  margin: 0 0 3rem 0;
 
   .logo, .navigation {
     display: flex;
