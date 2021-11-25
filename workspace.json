@@ -5,6 +5,7 @@
     "feature-landing": "libs/feature-landing",
     "feature-rides": "libs/feature-rides",
     "shared-types": "libs/shared/types",
+    "shared-utils": "libs/shared/utils",
     "ui": "libs/ui",
     "webapp": "apps/webapp",
     "webapp-e2e": "apps/webapp-e2e"
