@@ -1,40 +1,36 @@
-import styled from '@emotion/styled';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Card } from '@beat-frontends/ui';
 import { fetchRides } from '../../store/rides.slice';
 import { RideState } from '../../store/store';
 
-/* eslint-disable-next-line */
-export interface RideListProps {}
-
-const StyledRideList = styled.div`
-  color: pink;
-`;
-
-export function RideList(props: RideListProps) {
+export function RideList() {
   const dispatch = useDispatch();
   const { entities, status } = useSelector((state: RideState) => state.rides);
 
   useEffect(() => {
-    dispatch(fetchRides());
-  }, [dispatch]);
+    if (!entities.length) {
+      dispatch(fetchRides());
+    }
+  }, [dispatch, entities.length]);
 
   if (status === 'succeeded') {
     return (
-      <StyledRideList>
-        <h1>Welcome to RideList!</h1>
+      <React.Fragment>
+        <h1>My Rides</h1>
         {entities.map((ride) => (
-          <p key={ride.id}>{ride.ride.total}</p>
+          <Link key={ride.id} to={`rides/${ride.id}`}>
+            <Card>
+              <p>{ride.ride.total}</p>
+            </Card>
+          </Link>
         ))}
-      </StyledRideList>
+      </React.Fragment>
     );
   }
 
-  return (
-    <StyledRideList>
-      <h1>{status}!</h1>
-    </StyledRideList>
-  );
+  return <h1>{status}!</h1>;
 }
 
 export default RideList;

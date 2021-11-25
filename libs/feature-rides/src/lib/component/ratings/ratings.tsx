@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { Card } from '@beat-frontends/ui';
 import { fetchRating } from '../../store/rating.slice';
 import { RideState } from '../../store/store';
 
@@ -22,12 +23,22 @@ export function Ratings(props: RatingsProps) {
     dispatch(fetchRating());
   }, [dispatch]);
 
-  return (
-    <StyledRideList>
-      <h1>Ratings!</h1>
-      {rating?.message}
-    </StyledRideList>
-  );
+  if (rating) {
+    return (
+      <StyledRideList>
+        <h2>Ratings</h2>
+        <Card>{rating?.message}</Card>
+      </StyledRideList>
+    );
+  } else {
+    return (
+      <StyledRideList>
+        <Card>
+          <h2>Rate your ride</h2>
+        </Card>
+      </StyledRideList>
+    );
+  }
 }
 
 export default Ratings;
