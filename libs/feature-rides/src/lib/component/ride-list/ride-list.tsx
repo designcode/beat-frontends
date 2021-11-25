@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Card } from '@beat-frontends/ui';
 import { fetchRides } from '../../store/rides.slice';
 import { RideState } from '../../store/store';
+import { RideDetails } from './../ride-details/ride-details';
 
 export function RideList() {
   const dispatch = useDispatch();
@@ -19,11 +19,9 @@ export function RideList() {
     return (
       <React.Fragment>
         <h1>My Rides</h1>
-        {entities.map((ride) => (
-          <Link key={ride.id} to={`rides/${ride.id}`}>
-            <Card>
-              <p>{ride.ride.total}</p>
-            </Card>
+        {entities.map((entity) => (
+          <Link key={entity.id} to={`rides/${entity.id}`}>
+            <RideDetails ride={entity} />
           </Link>
         ))}
       </React.Fragment>

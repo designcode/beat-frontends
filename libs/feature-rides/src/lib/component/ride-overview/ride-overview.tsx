@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Card } from '@beat-frontends/ui';
 import { fetchRideById, fetchRides } from '../../store/rides.slice';
 import { RideState } from '../../store/store';
+import { RideDetails } from './../ride-details/ride-details';
 import { Ratings } from './../ratings/ratings';
 
 interface MatchParams {
@@ -36,8 +36,9 @@ export function RideOverview(props: RideOverviewProps) {
         <h1>Ride Details</h1>
         <Link to="/rides">Back</Link>
       </div>
-
-      <Card>{ride?.ride.pickup}</Card>
+      {
+        ride && <RideDetails ride={ride} showMap={true} />
+      }
 
       <Ratings rideId={rideId} />
     </StyledRideList>
