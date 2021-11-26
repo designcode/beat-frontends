@@ -14,7 +14,7 @@ export interface RideInfo {
 export interface RatingEntity {
   id: number;
   rate: number;
-  message: string;
+  message?: string;
 }
 
 export interface PaginatedEntitiesRequestPayload {
