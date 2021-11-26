@@ -36,6 +36,15 @@
         }
       }
     },
+    "start": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "npx nx serve webapp",
+          "npx nx serve backend"
+        ]
+      }
+    },
     "serve": {
       "executor": "@nrwl/web:dev-server",
       "options": {
