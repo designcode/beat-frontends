@@ -9,6 +9,10 @@ const StyledRideDetails = styled.div`
     justify-content: space-between;
     font-size: 1rem;
   }
+
+  img {
+    width: 100%;
+  }
 `;
 
 export interface RideDetailsProps {

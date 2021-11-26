@@ -11,7 +11,7 @@ const StyledContainer = styled.div`
   align-content: flex-start;
 
   .container {
-    width: 50rem;
+    width: 40rem;
     margin: 5rem;
   }
 `;
