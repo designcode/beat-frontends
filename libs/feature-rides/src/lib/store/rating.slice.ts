@@ -1,8 +1,16 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RatingEntity } from '@beat-frontends/shared/types';
 
-export const fetchRating = createAsyncThunk('ratings/fetchRating', async () => {
+export interface RideRatingRequesyPayload {
+  rideId: number;
+}
+
+export const fetchRatings = createAsyncThunk('ratings/fetchRating', async () => {
   return fetch('http://localhost:8080/comments').then((res) => res.json());
+});
+
+export const fetchRatingsById = createAsyncThunk('ratings/fetchRatingById', async ({ rideId }: RideRatingRequesyPayload) => {
+  return fetch(`http://localhost:8080/comments?rideId=${rideId}`).then((res) => res.json());
 });
 
 export interface RideRatingState {
@@ -23,11 +31,12 @@ export const ratingSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(fetchRating.pending, (state: RideRatingState) => {
+      // fetchRatings
+      .addCase(fetchRatings.pending, (state: RideRatingState) => {
         state.status = 'loading';
       })
       .addCase(
-        fetchRating.fulfilled,
+        fetchRatings.fulfilled,
         (
           state: RideRatingState,
           action: PayloadAction<Array<RatingEntity>>
@@ -39,7 +48,28 @@ export const ratingSlice = createSlice({
           );
         }
       )
-      .addCase(fetchRating.rejected, (state, action) => {
+      .addCase(fetchRatings.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      // fetchRatingsById
+      .addCase(fetchRatingsById.pending, (state: RideRatingState) => {
+        state.status = 'loading';
+      })
+      .addCase(
+        fetchRatingsById.fulfilled,
+        (
+          state: RideRatingState,
+          action: PayloadAction<Array<RatingEntity>>
+        ) => {
+          state.status = 'succeeded';
+          state.entities = action.payload.reduce(
+            (c, v) => ({ ...c, [v.id]: v }),
+            {}
+          );
+        }
+      )
+      .addCase(fetchRatingsById.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });

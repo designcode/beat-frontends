@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Card } from '@beat-frontends/ui';
-import { fetchRating } from '../../store/rating.slice';
+import { fetchRatingsById } from '../../store/rating.slice';
 import { RideState } from '../../store/store';
 
 export interface RatingsProps {
@@ -14,14 +14,19 @@ const StyledRideList = styled.div`
 `;
 
 export function Ratings(props: RatingsProps) {
+  const rideId = props.rideId;
   const dispatch = useDispatch();
   const rating = useSelector(
     (state: RideState) => state.ratings.entities[props.rideId]
   );
 
   useEffect(() => {
-    dispatch(fetchRating());
-  }, [dispatch]);
+    if (!rating) {
+      dispatch(fetchRatingsById({
+        rideId,
+      }));
+    }
+  }, [dispatch, rideId, rating]);
 
   if (rating) {
     return (
