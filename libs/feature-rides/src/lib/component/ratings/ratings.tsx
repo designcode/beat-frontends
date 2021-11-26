@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Card } from '@beat-frontends/ui';
 import { fetchRatingsById } from '../../store/rating.slice';
 import { RideState } from '../../store/store';
+import RatingForm from './rating-form';
 
 export interface RatingsProps {
   rideId: number;
@@ -32,17 +33,19 @@ export function Ratings(props: RatingsProps) {
     return (
       <StyledRatings>
         <h2>Ratings</h2>
-        <Card>{rating?.message}</Card>
+        <Card>
+          <h2>{rating?.rate} out of 5</h2>
+          {
+            rating?.message && <p>{rating?.message}</p>
+          }
+        </Card>
       </StyledRatings>
     );
   } else {
     return (
       <StyledRatings>
-        <Card>
-          <h2>Rate your ride</h2>
-
-
-        </Card>
+      <h2>Ratings</h2>
+        <RatingForm rideId={rideId} />
       </StyledRatings>
     );
   }
