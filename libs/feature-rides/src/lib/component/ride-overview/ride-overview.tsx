@@ -14,7 +14,7 @@ interface MatchParams {
 /* eslint-disable-next-line */
 export interface RideOverviewProps extends RouteComponentProps<MatchParams> {}
 
-const StyledRideList = styled.div`
+const StyledRideOverview = styled.div`
   .header {
     display: flex;
     justify-content: space-between;
@@ -31,7 +31,7 @@ export function RideOverview(props: RideOverviewProps) {
   }, [dispatch, rideId]);
 
   return (
-    <StyledRideList>
+    <StyledRideOverview>
       <div className="header">
         <h1>Ride Details</h1>
         <Link to="/rides">Back</Link>
@@ -41,7 +41,7 @@ export function RideOverview(props: RideOverviewProps) {
       }
 
       <Ratings rideId={rideId} />
-    </StyledRideList>
+    </StyledRideOverview>
   );
 }
 

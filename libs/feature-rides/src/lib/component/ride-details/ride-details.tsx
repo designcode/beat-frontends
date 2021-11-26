@@ -3,7 +3,7 @@ import { Card } from '@beat-frontends/ui';
 import { RideEntity } from '@beat-frontends/shared/types';
 import { formateDate, formatCurrency } from '@beat-frontends/shared/utils';
 
-const StyledRideList = styled.div`
+const StyledRideDetails = styled.div`
   .header {
     display: flex;
     justify-content: space-between;
@@ -24,7 +24,7 @@ export function RideDetails(props: RideDetailsProps) {
     ride.ride.dropoff
   );
   return (
-    <StyledRideList>
+    <StyledRideDetails>
       <Card>
         <div className="header">
           <h3>{formateDate(ride.ride.created_at)}</h3>
@@ -32,7 +32,7 @@ export function RideDetails(props: RideDetailsProps) {
         </div>
         <div className="body">{rideInfo}</div>
       </Card>
-    </StyledRideList>
+    </StyledRideDetails>
   );
 }
 

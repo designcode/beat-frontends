@@ -9,7 +9,7 @@ export interface RatingsProps {
   rideId: number;
 }
 
-const StyledRideList = styled.div`
+const StyledRatings = styled.div`
   color: pink;
 `;
 
@@ -30,18 +30,20 @@ export function Ratings(props: RatingsProps) {
 
   if (rating) {
     return (
-      <StyledRideList>
+      <StyledRatings>
         <h2>Ratings</h2>
         <Card>{rating?.message}</Card>
-      </StyledRideList>
+      </StyledRatings>
     );
   } else {
     return (
-      <StyledRideList>
+      <StyledRatings>
         <Card>
           <h2>Rate your ride</h2>
+
+
         </Card>
-      </StyledRideList>
+      </StyledRatings>
     );
   }
 }
