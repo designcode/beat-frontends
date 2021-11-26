@@ -1,94 +1,80 @@
 
 
-# BeatFrontends
+# Beat Frontends
 
-This project was generated using [Nx](https://nx.dev).
+## Introduction
+This is my implementation of THA from beat. Before we jump into Architectural and implementation details, I'd like to explain the approach I took when implementing.
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+I consider THAs as something more of a POC rather than actual product/project. With an actual Product Implementation, 
+you have people from other domains (Business, Product, Testing etc) to clarify requirements, however with a POC/THA, you don't have that luxury.
+The way I balance this limitation
 
-🔎 **Smart, Extensible Build Framework**
+- Focus on completion.
+- Although it's a POC/THA, it should have good quality code.
+- Keeping scalibilty in mind: make it so it can be refactored/scaled into an actual product.
 
-## Adding capabilities to your workspace
+Keeping above items in mind, I'd like to emphasis that my primary focus while implementing this THA was on scalability. How it can be used as an actual Product later and how multiple devs can contribute to it.
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+Also I am not React Expert, I have 9 years of AngularJS / Angular experience so the reviwer might come across something that's totally against React rules. Having said that I did spent good amount of time reading about how setup basic things in React.
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+Another important factor here, I spent close to 24 hours on the implementation, that roughly translates to 3 days of a dev work.
 
-Below are our core plugins:
+## Github
+This project is hosted on Github as private project.
+https://github.com/designcode/beat-frontends
 
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
+If you wanna see the commit history, you can request access. I really like to make atomic commits, makes it easier to track back (if something went wrong) or generate backlog etc.
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+## Frameworks
+### NX
+I've used NX to create Apps and Libraries. It let's you organize and make libraries re-usable. More on NX in Architecture section.
 
-## Generate an application
+### React
+Since it was a requirement, I used React as the main application framework. Last time I wrote code in React was a couple of years ago. It's crazy how fast you can develop with React.
 
-Run `nx g @nrwl/react:app my-app` to generate an application.
+### React Redux
+I used React Redux Toolkit to manage state.
 
-> You can use any of the plugins above to generate applications as well.
+### CSS
+I've used styled components and scss for global styles. I didn't spend too much on researching on what's the best option.
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+## Architecture
+This project uses NX to manage it's libraries and apps. NX is a smart, extensible build framework. When working with big distributed teams, it can come in quite handy, the reasons I love it the most 
 
-## Generate a library
+- One Repository, every project gets to share the good parts
+- Helps with brining same standards across all the your front-end projects
+- One package.json, makes it easy to maintain dependencies, makes you conscious of your dependencies (do you really need lodash to just use cloneDeep?)
+- Dependency graph!
 
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
+Although, it can be a little overwhelming to see a lot of config files and src/libs folder, but once you find your way around it, it gets very smooth.
 
-> You can also use any of the plugins above to generate libraries as well.
+I'd start review from `apps/webapp/src`
 
-Libraries are shareable across libraries and applications. They can be imported from `@beat-frontends/mylib`.
+### Domain Driven Libraries
+In this project, I've taken domain driven libraries. For example: **Ride** is a domain/feature that can be used in 
 
-## Development server
+- a webapp for users
+- a dashboard for monitoring team
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Keeping this in mind, you write self sustainable libraries.
 
-## Code scaffolding
+### UI Library
+There is a small UI library that I've created that contains dumb/presentation components.
 
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+### Shared
+When working on large code base, you always need to share functionality between projects, `utils`, `apiClient` and what not, I've created some shared libraries as well.
 
-## Build
+## Caveats
+- No tests :cry:
+- Api calls should be made via a client as opposed to directly using `fetch` in slices
+- No i18n
+- No a11y
+- No the best stylig implementation
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Let's run it
 
-## Running unit tests
+`npm install`
+and then
+`npx nx start webapp`
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+That starts both json-api server and webapp.
